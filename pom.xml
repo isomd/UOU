@@ -11,8 +11,8 @@
   <url>http://maven.apache.org</url>
 
   <modules>
-    <module>tml-app</module>
-    <module>tml-standard</module>
+    <module>uou-app</module>
+    <module>uou-standard</module>
   </modules>
 
   <properties>
@@ -24,32 +24,32 @@
     <dependencies>
       <dependency>
         <groupId>io.github.timemachinelab</groupId>
-        <artifactId>tml-api</artifactId>
+        <artifactId>uou-api</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>io.github.timemachinelab</groupId>
-        <artifactId>tml-adapter</artifactId>
+        <artifactId>uou-adapter</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>io.github.timemachinelab</groupId>
-        <artifactId>tml-client</artifactId>
+        <artifactId>uou-client</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>io.github.timemachinelab</groupId>
-        <artifactId>tml-domain</artifactId>
+        <artifactId>uou-domain</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>io.github.timemachinelab</groupId>
-        <artifactId>tml-infrastructure</artifactId>
+        <artifactId>uou-infrastructure</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>io.github.timemachinelab</groupId>
-        <artifactId>tml-service</artifactId>
+        <artifactId>uou-service</artifactId>
         <version>${project.version}</version>
       </dependency>
 

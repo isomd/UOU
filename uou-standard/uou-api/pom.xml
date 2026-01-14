@@ -3,15 +3,15 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>io.github.timemachinelab</groupId>
-        <artifactId>tml-standard</artifactId>
+        <artifactId>uou-standard</artifactId>
         <version>1.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>tml-client</artifactId>
+    <artifactId>uou-api</artifactId>
     <packaging>jar</packaging>
 
-    <name>tml-client</name>
+    <name>tml-api</name>
     <url>http://maven.apache.org</url>
 
     <properties>

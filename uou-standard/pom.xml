@@ -1,24 +1,29 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>io.github.timemachinelab</groupId>
-        <artifactId>tml-standard</artifactId>
+        <artifactId>UOU</artifactId>
         <version>1.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>tml-api</artifactId>
-    <packaging>jar</packaging>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>uou-standard</artifactId>
+    <packaging>pom</packaging>
 
-    <name>tml-api</name>
-    <url>http://maven.apache.org</url>
+    <name>tml-standard</name>
 
+    <modules>
+        <module>uou-api</module>
+        <module>uou-adapter</module>
+        <module>uou-domain</module>
+        <module>uou-infrastructure</module>
+        <module>uou-client</module>
+        <module>uou-service</module>
+    </modules>
+    
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <dependencies>
-
-    </dependencies>
 </project>
