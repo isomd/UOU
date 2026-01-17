@@ -20,6 +20,14 @@
     <dependencies>
         <dependency>
             <groupId>io.github.timemachinelab</groupId>
+            <artifactId>uou-service</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.timemachinelab</groupId>
+            <artifactId>uou-infrastructure</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.timemachinelab</groupId>
             <artifactId>uou-adapter</artifactId>
         </dependency>
         <dependency>

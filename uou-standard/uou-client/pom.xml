@@ -19,17 +19,6 @@
     </properties>
 
     <dependencies>
-<!--add-->
-        <!-- Spring Boot Starter Web for external communication -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
 
-        <!-- RestTemplate for external HTTP calls -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
     </dependencies>
 </project>

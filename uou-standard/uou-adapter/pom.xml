@@ -28,6 +28,11 @@
             <groupId>io.github.timemachinelab</groupId>
             <artifactId>uou-service</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>io.github.timemachinelab</groupId>
+            <artifactId>uou-infrastructure</artifactId>
+        </dependency>
 <!--add-->
         <!-- Spring Boot Starter Web for HTTP handling -->
         <dependency>

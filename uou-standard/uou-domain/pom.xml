@@ -19,13 +19,6 @@
     </properties>
 
     <dependencies>
-<!--        add-->
-        <!-- Spring Boot Starter (Provides Spring Core, Spring Beans, etc.) -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-            <version>${spring.boot.version}</version> <!-- 使用父pom中管理的版本 -->
-        </dependency>
 
     </dependencies>
 </project>
