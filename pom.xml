@@ -18,6 +18,24 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <tml.foundation.version>1.1.0-alpha.2</tml.foundation.version>
+    <!-- Spring Boot Version -->
+    <spring.boot.version>2.5.4</spring.boot.version>
+
+    <!-- MyBatis-Plus Version -->
+    <mybatis.plus.version>3.4.0</mybatis.plus.version>
+
+    <!-- MySQL Connector Version -->
+    <mysql.connector.version>8.0.26</mysql.connector.version>
+
+    <!-- Lombok Version -->
+    <lombok.version>1.18.22</lombok.version>
+
+    <!-- Maven Compiler Plugin Version -->
+    <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
+
+    <!-- Java Version -->
+    <java.version>11</java.version>
+
   </properties>
 
   <dependencyManagement>
@@ -60,7 +78,40 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
+
+
+<!--      新add的依赖-->
+      <!-- Spring Boot -->
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring.boot.version}</version>
+        <scope>import</scope>
+        <type>pom</type>
+      </dependency>
+
+      <!-- MyBatis-Plus -->
+      <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-boot-starter</artifactId>
+        <version>${mybatis.plus.version}</version>
+      </dependency>
+
+      <!-- MySQL Connector -->
+      <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>${mysql.connector.version}</version>
+      </dependency>
+
+      <!-- Lombok -->
+      <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>${lombok.version}</version>
+        <scope>provided</scope>
+      </dependency>
+
     </dependencies>
   </dependencyManagement>
-
 </project>
