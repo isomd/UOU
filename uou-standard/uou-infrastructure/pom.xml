@@ -29,7 +29,6 @@
             <artifactId>uou-service</artifactId>
         </dependency>
 
-<!--        add-->
         <!-- MyBatis-Plus for easy database interaction -->
         <dependency>
             <groupId>com.baomidou</groupId>

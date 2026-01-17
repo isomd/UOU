@@ -23,10 +23,5 @@
             <groupId>io.github.timemachinelab</groupId>
             <artifactId>uou-domain</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>io.github.timemachinelab</groupId>
-            <artifactId>uou-api</artifactId>
-        </dependency>
     </dependencies>
 </project>

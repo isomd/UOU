@@ -1,29 +1,15 @@
 package io.github.timemachinelab.api.resp;
 
+import lombok.Data;
+
+@Data
 public class VerifyCredentialResp {
-    private boolean isValid;    // 是否验证通过
-    private String message;     // 响应信息
+    private String userId;
 
-    // 构造函数、Getter 和 Setter
-    public VerifyCredentialResp(boolean isValid, String message) {
-        this.isValid = isValid;
-        this.message = message;
-    }
+    private String userStatus;
 
-    public boolean isValid() {
-        return isValid;
-    }
+    private String credentialAccount;
 
-    public void setValid(boolean isValid) {
-        this.isValid = isValid;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
+    private String credentialType;
 }
 

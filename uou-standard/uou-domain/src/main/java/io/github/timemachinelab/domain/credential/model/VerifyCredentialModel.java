@@ -1,5 +1,8 @@
 package io.github.timemachinelab.domain.credential.model;
 
+import lombok.Data;
+
+@Data
 public class VerifyCredentialModel {
     private String credentialAccount;
     private String credentialContent;
@@ -9,31 +12,6 @@ public class VerifyCredentialModel {
     public VerifyCredentialModel(String credentialAccount, String credentialContent, String credentialType) {
         this.credentialAccount = credentialAccount;
         this.credentialContent = credentialContent;
-        this.credentialType = credentialType;
-    }
-
-    // Getter 和 Setter
-    public String getCredentialAccount() {
-        return credentialAccount;
-    }
-
-    public void setCredentialAccount(String credentialAccount) {
-        this.credentialAccount = credentialAccount;
-    }
-
-    public String getCredentialContent() {
-        return credentialContent;
-    }
-
-    public void setCredentialContent(String credentialContent) {
-        this.credentialContent = credentialContent;
-    }
-
-    public String getCredentialType() {
-        return credentialType;
-    }
-
-    public void setCredentialType(String credentialType) {
         this.credentialType = credentialType;
     }
 }
