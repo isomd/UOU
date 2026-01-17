@@ -1,6 +1,7 @@
 package io.github.timemachinelab.domain.credential.service;
 
 import io.github.timemachinelab.domain.credential.model.VerifyCredentialModel;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -1,12 +1,9 @@
 package io.github.timemachinelab.infrastructure.persistence.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 
-@Entity
 public class CredentialEntity {
 
-    @Id
+
     private String credentialAccount;
     private String credentialContent;
     private String credentialType;
@@ -16,6 +13,9 @@ public class CredentialEntity {
         this.credentialAccount = credentialAccount;
         this.credentialContent = credentialContent;
         this.credentialType = credentialType;
+    }
+
+    public CredentialEntity() {
     }
 
     // Getter 和 Setter

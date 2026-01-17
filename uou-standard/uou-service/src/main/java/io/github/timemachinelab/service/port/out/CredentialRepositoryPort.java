@@ -1,7 +1,7 @@
 package io.github.timemachinelab.service.port.out;
 
-import io.github.timemachinelab.service.model.VerifyCredentialDto;
+import io.github.timemachinelab.service.model.VerifyCredentialModel;
 
 public interface CredentialRepositoryPort {
-    void save(VerifyCredentialDto model); // 使用业务模型，不依赖实体类
+    void save(VerifyCredentialModel model); // 使用业务模型，不依赖实体类
 }

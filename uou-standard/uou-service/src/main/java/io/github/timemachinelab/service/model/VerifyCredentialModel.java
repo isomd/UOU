@@ -1,17 +1,17 @@
-package io.github.timemachinelab.api.req;
+package io.github.timemachinelab.service.model;
 
-public class VerifyCredentialReq {
-    private String credentialAccount;  // 凭证账号，例如手机号、邮箱等
-    private String credentialType;     // 凭证类型（1: 手机号, 2: 邮箱, 3: 用户名, 4: 第三方ID）
-    private String credentialContent;  // 凭证内容（如加密后的密码）
+public class VerifyCredentialModel {
+    private String credentialAccount;  // 凭证账号
+    private String credentialType;     // 凭证类型
+    private String credentialContent;  // 凭证内容
 
     // 用户信息
     private String nickname;          // 昵称
     private String avatar;            // 头像
 
     // 构造函数、Getter 和 Setter
-    public VerifyCredentialReq(String credentialAccount, String credentialType, String credentialContent,
-                               String nickname, String avatar ) {
+    public VerifyCredentialModel(String credentialAccount, String credentialType, String credentialContent,
+                                 String nickname, String avatar) {
         this.credentialAccount = credentialAccount;
         this.credentialType = credentialType;
         this.credentialContent = credentialContent;
@@ -60,5 +60,4 @@ public class VerifyCredentialReq {
     public void setAvatar(String avatar) {
         this.avatar = avatar;
     }
-
 }

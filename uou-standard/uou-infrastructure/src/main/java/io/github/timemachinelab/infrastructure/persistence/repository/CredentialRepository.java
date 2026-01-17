@@ -1,16 +1,15 @@
 package io.github.timemachinelab.infrastructure.persistence.repository;
 
-import io.github.timemachinelab.service.model.VerifyCredentialDto;
+import io.github.timemachinelab.service.model.VerifyCredentialModel;
 import io.github.timemachinelab.service.port.out.CredentialRepositoryPort;
 import io.github.timemachinelab.infrastructure.persistence.entity.CredentialEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
 @Component
 public class CredentialRepository implements CredentialRepositoryPort {
 
     @Override
-    public void save(VerifyCredentialDto model) {
+    public void save(VerifyCredentialModel model) {
         // 将业务模型转换为持久化实体
         CredentialEntity entity = new CredentialEntity(
                 model.getCredentialAccount(),

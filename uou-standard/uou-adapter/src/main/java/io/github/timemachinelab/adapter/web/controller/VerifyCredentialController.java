@@ -6,7 +6,7 @@ import io.github.timemachinelab.api.resp.VerifyCredentialResp;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/credentials")
+@RequestMapping("uou/api/credentials")
 public class VerifyCredentialController {
 
     private final VerifyCredentialWebDelegate delegate;
