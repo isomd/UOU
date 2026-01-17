@@ -17,7 +17,10 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <tml.foundation.version>1.1.0-alpha.2</tml.foundation.version>
+    <tml.foundation.version>1.1.0-alpha.3</tml.foundation.version>
+    <spring-boot.version>2.5.4</spring-boot.version>
+    <mybatis-plus.version>3.4.3.1</mybatis-plus.version>
+    <lombok.version>1.18.24</lombok.version>
   </properties>
 
   <dependencyManagement>
@@ -60,7 +63,49 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
+
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter</artifactId>
+        <version>${spring-boot.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+        <version>${spring-boot.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-boot-starter</artifactId>
+        <version>${mybatis-plus.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>${lombok.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      
+      
     </dependencies>
   </dependencyManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.github.timemachinelab</groupId>
+      <artifactId>tml-sdk-spring-boot-starter-web</artifactId>
+    </dependency>
+  </dependencies>
 
 </project>
