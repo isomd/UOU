@@ -10,6 +10,7 @@ import io.github.timemachinelab.service.model.VerifyCredentialModel;
 import io.github.timemachinelab.service.port.out.UserRepositoryPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component
 public class UserRepository implements UserRepositoryPort {
@@ -21,23 +22,31 @@ public class UserRepository implements UserRepositoryPort {
     private UserCredentialMapper userCredentialMapper;
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public UserModel saveByCredential(UserModel model) {
         // 转换为实体
         UserIdentityEntity identityEntity = UserIdentityEntity.builder()
-                .userId(model.getUserId())
-                .userStatus(model.getUserStatus())
+                .userStatus("normal")
                 .build();
+
         userIdentityMapper.insert(identityEntity);
 
-        UserCredentialEntity entity = UserCredentialEntity.builder()
-                .userId(model.getUserId())
+        UserCredentialEntity credentialEntity = UserCredentialEntity.builder()
+                .userId(identityEntity.getUserId())
                 .credentialAccount(model.getCredentialAccount())
                 .credentialType(model.getCredentialType())
                 .credentialContent(model.getCredentialContent())
                 .build();
-        userCredentialMapper.insert(entity);
+        userCredentialMapper.insert(credentialEntity);
 
-        return model;
+        return UserModel.builder()
+                .userId(identityEntity.getUserId())
+                .userStatus(identityEntity.getUserStatus())
+                .credentialId(credentialEntity.getCredentialId())
+                .credentialAccount(credentialEntity.getCredentialAccount())
+                .credentialType(credentialEntity.getCredentialType())
+                .credentialContent(credentialEntity.getCredentialContent())
+                .build();
     }
 
     @Override

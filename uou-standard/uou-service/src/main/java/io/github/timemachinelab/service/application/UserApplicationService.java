@@ -10,8 +10,10 @@ import io.github.timemachinelab.service.port.in.UserCase;
 import io.github.timemachinelab.service.port.out.UserRepositoryPort;
 import io.github.timemachinelab.domain.user.service.UserDomainService;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 public class UserApplicationService implements UserCase {
     private final UserDomainService userDomainService;
@@ -46,9 +48,14 @@ public class UserApplicationService implements UserCase {
             CredentialTypeEnum byCode = CredentialTypeEnum.getByCode(verifyUserModel.getCredentialType());
 
             if (byCode != null && byCode.isSupportAutoCreate()){
-                UserModel newUserModel = userRepositoryPort.saveByCredential(verifyUserModel);
+                try {
+                    UserModel newUserModel = userRepositoryPort.saveByCredential(verifyUserModel);
+                    return convertToUserModelInfo(newUserModel);
+                } catch (Exception e){
+                    log.error("保存用户信息失败: {}", e.getMessage());
+                    throw new BusinessException("500", "保存用户信息失败");
+                }
 
-                return convertToUserModelInfo(newUserModel);
             }
         }
 
