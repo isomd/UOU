@@ -19,6 +19,9 @@
     </properties>
 
     <dependencies>
-
+        <dependency>
+            <groupId>io.github.timemachinelab</groupId>
+            <artifactId>uou-api</artifactId>
+        </dependency>
     </dependencies>
 </project>

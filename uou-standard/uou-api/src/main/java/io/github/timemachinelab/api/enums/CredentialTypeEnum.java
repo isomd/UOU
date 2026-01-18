@@ -1,4 +1,4 @@
-package io.github.timemachinelab.service.model.enums;
+package io.github.timemachinelab.api.enums;
 
 
 import lombok.AllArgsConstructor;
@@ -25,4 +25,22 @@ public enum CredentialTypeEnum {
     private final String desc;
 
     private final boolean isSupportAutoCreate;
+
+    public static CredentialTypeEnum getByCode(String code) {
+        for (CredentialTypeEnum value : values()) {
+            if (value.code.equals(code)) {
+                return value;
+            }
+        }
+        return null;
+    }
+
+    public static CredentialTypeEnum getByDesc(String desc) {
+        for (CredentialTypeEnum value : values()) {
+            if (value.desc.equals(desc)) {
+                return value;
+            }
+        }
+        return null;
+    }
 }

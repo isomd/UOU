@@ -1,42 +1,70 @@
 package io.github.timemachinelab.service.application;
 
-import io.github.timemachinelab.service.model.UserModel;
+import io.github.timemachinelab.api.enums.CredentialTypeEnum;
+import io.github.timemachinelab.api.error.BusinessException;
+import io.github.timemachinelab.api.error.ErrorCode;
+import io.github.timemachinelab.domain.user.model.UserModel;
+import io.github.timemachinelab.service.model.UserInfoModel;
 import io.github.timemachinelab.service.model.VerifyCredentialModel;
 import io.github.timemachinelab.service.port.in.UserCase;
 import io.github.timemachinelab.service.port.out.UserRepositoryPort;
-import io.github.timemachinelab.domain.credential.service.CredentialVerificationService;
+import io.github.timemachinelab.domain.user.service.UserDomainService;
+
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserApplicationService implements UserCase {
-    private final CredentialVerificationService credentialVerificationService;
+    private final UserDomainService userDomainService;
 
     private final UserRepositoryPort userRepositoryPort;
 
-    public UserApplicationService(CredentialVerificationService credentialVerificationService,
+    public UserApplicationService(UserDomainService userDomainService,
                                   UserRepositoryPort userRepositoryPort) {
-        this.credentialVerificationService = credentialVerificationService;
+        this.userDomainService = userDomainService;
         this.userRepositoryPort = userRepositoryPort;
     }
 
     @Override
-    public UserModel verifyCredential(VerifyCredentialModel verifyCredentialModel) {
-        // 1. 将应用层的 DTO 转换为领域模型
-        io.github.timemachinelab.domain.credential.model.VerifyCredentialModel domainModel = new io.github.timemachinelab.domain.credential.model.VerifyCredentialModel(
-                verifyCredentialModel.getCredentialAccount(),
-                verifyCredentialModel.getCredentialContent(),
-                verifyCredentialModel.getCredentialType()
-        );
+    public UserInfoModel verifyCredential(VerifyCredentialModel verifyCredentialModel) {
+        // 1. 根据凭证信息查询用户信息
+        UserModel userModel = userRepositoryPort.selectByCredential(verifyCredentialModel);
 
-        // 2. 调用领域服务进行凭证验证
-        boolean isValid = credentialVerificationService.verify(domainModel);
+        // 2.verifyCredentialModel转化为userModel
+        UserModel verifyUserModel = UserModel.builder()
+                .credentialAccount(verifyCredentialModel.getCredentialAccount())
+                .credentialType(verifyCredentialModel.getCredentialType())
+                .credentialContent(verifyCredentialModel.getCredentialContent())
+                .build();
 
-        if (isValid) {
-            return new VerifyCredentialResp(true, "Credential is valid.");
+        // 3. 调用领域服务进行凭证验证
+        boolean isValid = userDomainService.verifyCredential(verifyUserModel, userModel);
+
+        // 4. 验证通过
+        if (isValid){
+            return convertToUserModelInfo(userModel);
         } else {
-            // 如果凭证不正确，创建新的凭证
-            userRepositoryPort.save(verifyCredentialModel);  // 使用 DTO 保存数据
-            return new VerifyCredentialResp(false, "Credential is invalid, new credential created.");
+            CredentialTypeEnum byCode = CredentialTypeEnum.getByCode(verifyUserModel.getCredentialType());
+
+            if (byCode != null && byCode.isSupportAutoCreate()){
+                UserModel newUserModel = userRepositoryPort.saveByCredential(verifyUserModel);
+
+                return convertToUserModelInfo(newUserModel);
+            }
         }
+
+        throw new BusinessException(ErrorCode.USER_NOT_FOUND);
+    }
+
+    private UserInfoModel convertToUserModelInfo(UserModel userModel){
+        if (userModel == null){
+            return null;
+        }
+
+        return UserInfoModel.builder()
+                .userId(userModel.getUserId())
+                .userStatus(userModel.getUserStatus())
+                .credentialAccount(userModel.getCredentialAccount())
+                .credentialType(userModel.getCredentialType())
+                .build();
     }
 }
